@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Assignment</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+    <div class="main-content">
+        <div class="div-container">
+            <div class="cnt-shell">
+                <h2>SpaceX Launch Programs</h2>
+                <div class="side-navbar">
+                    <h3>Filters</h3>
+                    <h4>Launch Year</h4>
+                    <div class="list-item">
+                        <label for="year_2006">
+                            <input type="radio" name="lunch_year" value="2006" id="year_2006">
+                            <span>2006</span>
+                        </label>
+                        <label for="year_2007">
+                            <input type="radio" name="lunch_year" value="2007" id="year_2007">
+                            <span>2007</span>
+                        </label>
+                        <label for="year_2008">
+                            <input type="radio" name="lunch_year" value="2008" id="year_2008">
+                            <span>2008</span>
+                        </label>
+                        <label for="year_2009">
+                            <input type="radio" name="lunch_year" value="2009" id="year_2009">
+                            <span>2009</span>
+                        </label>
+                        <label for="year_2010">
+                            <input type="radio" name="lunch_year" value="2010" id="year_2010">
+                            <span>2010</span>
+                        </label>
+                        <label for="year_2011">
+                            <input type="radio" name="lunch_year" value="2011" id="year_2011">
+                            <span>2011</span>
+                        </label>
+                        <label for="year_2012">
+                            <input type="radio" name="lunch_year" value="2012" id="year_2012">
+                            <span>2012</span>
+                        </label>
+                        <label for="year_2013">
+                            <input type="radio" name="lunch_year" value="2013" id="year_2013">
+                            <span>2013</span>
+                        </label>
+                        <label for="year_2014">
+                            <input type="radio" name="lunch_year" value="2014" id="year_2014">
+                            <span>2014</span>
+                        </label>
+                        <label for="year_2015">
+                            <input type="radio" name="lunch_year" value="2015" id="year_2015">
+                            <span>2015</span>
+                        </label>
+                        <label for="year_2016">
+                            <input type="radio" name="lunch_year" value="2016" id="year_2016">
+                            <span>2016</span>
+                        </label>
+                        <label for="year_2017">
+                            <input type="radio" name="lunch_year" value="2017" id="year_2017">
+                            <span>2017</span>
+                        </label>
+                        <label for="year_2018">
+                            <input type="radio" name="lunch_year" value="2018" id="year_2018">
+                            <span>2018</span>
+                        </label>
+                        <label for="year_2019">
+                            <input type="radio" name="lunch_year" value="2019" id="year_2019">
+                            <span>2019</span>
+                        </label>
+                        <label for="year_2020">
+                            <input type="radio" name="lunch_year" value="2020" id="year_2020">
+                            <span>2020</span>
+                        </label>
+                    </div>
+                    <h4>Successfull Lunch</h4>
+                    <div class="list-item">
+                        <label for="launch_true">
+                            <input type="radio" name="successful_launch" value="true" id="launch_true">
+                            <span>True</span>
+                        </label>
+                        <label for="launch_false">
+                            <input type="radio" name="successful_launch" value="false" id="launch_false">
+                            <span>False</span>
+                        </label>
+                    </div>
+                    <h4>Successfull Landing</h4>
+                    <div class="list-item">
+                        <label for="land_true">
+                            <input type="radio" name="successful_land" value="true" id="land_true">
+                            <span>True</span>
+                        </label>
+                        <label for="land_false">
+                            <input type="radio" name="successful_land" value="false" id="land_false">
+                            <span>False</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="content-data" id="data_container">
+                    <!-- Dynamic post will display Here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="C:\Users\Sangr\OneDrive\Desktop\jquery-3.6.0.min.js"></script>
+    <script>
+        function renderContainer(response_data){
+
+            if(response_data.length === 0){
+                $("#data_container").html('No Matching records found');
+                return;
+            }
+            let htmlOutput = "";
+                defaultPostImg = 'https://farm5.staticflickr.com/4411/37087809715_08a6d9904d_o.jpg';
+
+            response_data.forEach( function( post ) {
+                
+                let mission_ids = "";
+                
+                post.mission_id.forEach(function(ids){
+                    mission_ids+= '<li><a href="#">'+ids+'</a></li>'
+                })
+
+                let land_success = post.rocket.first_stage.cores[0].land_success ? true : false;
+                
+                htmlOutput += '<div class="data-cnt-shell">' + 
+                                '<div class="shell-img">' +
+                                    '<img src="'+(post.links.flickr_images[0] ? post.links.flickr_images[0] : defaultPostImg) +'" alt="img" title="">' +
+                                '</div>' +
+                                '<div class="shell-content">' +
+                                    '<a href="#">'+ post.mission_name + " #" + post.flight_number+'</a>' +
+                                    '<h5>Mission Ids:</h5>' +
+                                    '<ul>' + 
+                                        mission_ids +
+                                    '</ul>' +
+                                    '<h5>Lunch Year: <span>'+post.launch_year+'</span></h5>' +
+                                    '<h5>Successfull Launch: <span>'+post.launch_success+'</span></h5>' +
+                                    '<h5>Successfull Landing: <span>'+land_success+'</span></h5>' +
+                                '</div>' +
+                            '</div>';
+            });
+
+            $("#data_container").html( htmlOutput );
+
+        }
+
+        $('input:radio[name=lunch_year], input:radio[name=successful_launch], input:radio[name=successful_land]').on('change', function(){
+            applyFilter();
+        })
+
+
+        function applyFilter(){
+            let spaceXApi = 'https://api.spaceXdata.com/v3/launches?limit=100',
+                lunchYear = $('input:radio[name=lunch_year]:checked').val(),
+                successfulLaunch = $('input:radio[name=successful_launch]:checked').val(),
+                successfulLand = $('input:radio[name=successful_land]:checked').val();
+
+            spaceXApi = successfulLaunch === "true" ? spaceXApi + "&launch_success=true" : spaceXApi;
+            spaceXApi = successfulLand === "true" ? spaceXApi + "&land_success=true" : spaceXApi;
+            spaceXApi = lunchYear ? spaceXApi + "&launch_year=" + lunchYear  : spaceXApi;
+
+            console.log('spaceXApi----', spaceXApi)
+            renderSpacexData(spaceXApi);
+        }
+
+        function renderSpacexData(apiUrl){
+            $("#data_container").html("loading....");
+            $.ajax({url: apiUrl, success: function(result){
+                console.log(result);
+                renderContainer(result);
+            }});
+        }
+
+        $(function(){
+            const spaceXApi = 'https://api.spaceXdata.com/v3/launches?limit=100';
+            renderSpacexData(spaceXApi)
+        });
+</script>
+<div class="footer">Developed By:- Sarathi Narendra</div>
+</body>
+</html>
+

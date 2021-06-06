@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    margin: 0px;
+    padding: 0px;
+    background-color: rgb(228 228 228);
+}
+.main-content{
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    position: relative;
+}
+.main-content .div-container{
+    margin: 0 auto;
+    padding: 0px;
+    width: 95%;
+}
+.cnt-shell{
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+.cnt-shell h2{
+    font-size: 40px;
+    font-weight: 700;
+    margin-top: 37px;
+    font-family: 'Open Sans', sans-serif;
+}
+.cnt-shell .side-navbar{
+    width:25%;
+    float: left;
+    padding: 10px;
+    margin: 30px 30px 0px 0px;
+    background:#fff;
+    border-radius:4px;
+}
+.cnt-shell .content-data{
+    width: 71%;
+    float: left;
+    padding: 0px;
+    margin: 16px 0px 0px 0px;
+    /* background: #fff; */
+    border-radius: 4px;
+}
+.side-navbar h3{
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-family: 'Open Sans', sans-serif;
+}
+.side-navbar h4{
+    text-align: center;
+    font-size: 18px;
+    font-weight: 300;
+    font-family: 'Open Sans', sans-serif;
+    border-bottom: solid 1px #ecebeb;
+    margin-bottom: 20px;
+    margin-top: 12px;
+    padding: 5px;
+}
+.list-item{
+    width: 100%;
+    padding: 0px;
+    margin:0px;
+
+}
+.list-item label span{
+    width: 104px;
+    background: #c5e09b;
+    padding: 10px 40px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 14px;
+}
+.list-item label input:checked + span{
+    background-color: #7cba01;
+}
+.list-item label input[type="radio"]{
+    background: aqua;
+    visibility: hidden;
+}
+.list-item label input[type="radio"]::after{
+    position:absolute;
+    left: 0px;
+    background: aqua;
+}
+.list-item label span{
+    color: #000;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Open Sans', sans-serif;
+}
+.data-cnt-shell{
+    width: 19%;
+    float: left;
+    margin: 16px;
+    padding: 10px;
+    background: #fff;
+    border-radius: 4px;
+}
+.shell-img{
+    width:100%;
+    margin-bottom:10px;
+    height: 115px;
+    overflow: hidden;
+}
+.shell-content{
+    width: 100%;
+    height: 155px;
+    overflow: hidden;
+    margin-top: 15px;
+    font-family: 'Open Sans', sans-serif;
+}
+.shell-content a{
+    font-size:14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+.data-cnt-shell .shell-img img{
+    width: 100%;
+}
+.shell-content h5{
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+.shell-content ul{
+    margin:0px 0px 5px 0px;
+    padding:0px
+}
+.shell-content ul li{
+    list-style: none;
+    margin-left:10px;
+}
+.shell-content ul li a{
+    text-decoration: none;
+    font-size: 13px;
+}
+.list-item label {
+    line-height: 45px;
+}
+.footer{
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    font-weight:600;
+
+}
+@media(max-width:700px){
+    .cnt-shell .side-navbar {
+        width: 100%;
+        float: left;
+        padding: 10px;
+        margin: 30px 30px 0px 0px;
+        background: #fff;
+        border-radius: 4px;
+    }
+    .data-cnt-shell{
+        width: 100%;
+        float: left;
+        margin:0px;
+        margin-bottom: 10px;
+        padding: 10px;
+        background: #fff;
+        border-radius: 4px;
+    }
+    .cnt-shell .content-data{
+        width:100%;
+    }
+}
+@media screen and (min-width: 701px) and (max-width: 1024px){
+.cnt-shell .side-navbar {
+    width: 25%;
+    float: left;
+    padding: 10px;
+    margin: 30px 18px 0px 0px;
+    background: #fff;
+    border-radius: 4px;
+}
+    .cnt-shell .content-data {
+        width: 69%;
+        float: left;
+        padding: 0px;
+        margin: 22px 0px 0px 0px;
+        /* background: #fff; */
+        border-radius: 4px;
+    }
+    .data-cnt-shell{
+        width: 43%;
+        float: left;
+        margin: 5px;
+        margin-bottom: 10px;
+        padding: 10px;
+        background: #fff;
+        border-radius: 4px;
+    }
+}
+
+/* Developed By:- Sarathi Narendra */
